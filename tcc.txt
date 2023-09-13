@@ -1,0 +1,22 @@
+create VIEW V_RESPOSTAS as 
+
+select  r.*, q.alt1, q.alt2, q.alt3, q.alt4, q.alt5, q.alt_certa, q.descricao, q.idquestao, u.nome, qp.idprova,  case when r.alternativa = q.alt_certa then 1 else 0 end as acerto
+FROM 
+    resposta r, questao_prova qp, questao q, usuario u
+WHERE 
+    r.idquestprov = qp.idquestprov
+    AND q.idquestao = qp.idquestao
+    AND r.id_usuario = u.id_usuario 
+
+
+Desempenho dos usuários em em uma prova
+
+select nome, sum(acerto) as acertos
+ from V_RESPOSTAS where idprova = 6
+group by nome
+
+Desempenho dos usuários em todas as provas
+
+SELECT idprova, nome, SUM( acerto ) AS acertos
+FROM V_RESPOSTAS
+GROUP BY idprova, nome
