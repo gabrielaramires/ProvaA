@@ -1,0 +1,18 @@
+label.campo {
+
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+
+}
+label.area {
+	display: inline-block;
+	width: 120px;
+	height: 40px;
+}
+
+select[readonly] {
+  background: #eee; /*Simular campo inativo - Sugestão @GabrielRodrigues*/
+  pointer-events: none;
+  touch-action: none;
+}
